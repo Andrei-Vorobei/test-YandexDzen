@@ -82,6 +82,6 @@ const createBoard = async (M, N, source) => {
 	timerId = setInterval(startLife, 1000);
 };
 
-const start = src => createBoard(M, N, src);
+const start = src => createBoard(M, N, src); // Старт программы
 
-const stop = () => clearInterval(timerId);
+const stop = () => clearInterval(timerId); // Стоп
