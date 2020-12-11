@@ -11,19 +11,17 @@ const createBoard = async (M, N, source) => {
 		let board;
 	
 		if (source) { // Если задана матрица source, как аргумент, то доска примет ее значение.
-			console.log(source);
-	
-			const getFile = async (source) => {
-				const res = await fetch(source);
+			const getFile = async (src) => {
+				const res = await fetch(src);
 	
 				if (!res.ok) {
-					throw new Error(`Could not fetch ${source}, status: ${res.status}`);
+					throw new Error(`Could not fetch ${src}, status: ${res.status}`);
 				}
 	
 				return res.json();
 			};
 	
-			board = await getFile(source);
+			await getFile(source).then((res) => board = res);
 	
 			console.log(board);
 		} else {
@@ -82,7 +80,7 @@ const createBoard = async (M, N, source) => {
 	
 		timerId = setInterval(startLife, 1000);
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 	}
 };
 
