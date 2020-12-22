@@ -18,7 +18,9 @@ const createBoard = async (M, N, source) => {
 					throw new Error(`Could not fetch ${src}, status: ${res.status}`);
 				}
 	
-				return res.json();
+				const json = await res.json();
+
+				return json;
 			};
 	
 			await getFile(source).then((res) => board = res);
